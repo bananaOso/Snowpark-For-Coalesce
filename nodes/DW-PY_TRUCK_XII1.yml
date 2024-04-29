@@ -1,0 +1,49 @@
+steps:
+  PY_TRUCK_XII1-f0f2e01d-79e8-49e7-9d12-8992080d96d9:
+    operation:
+      config:
+        dfcmd: |2-
+           
+           df_final = df_raw 
+        pyLib: import snowflake.snowpark as snowpark
+        writeMode: overwrite
+      database: ""
+      deployEnabled: true
+      description: ""
+      isMultisource: false
+      locationName: DW
+      materializationType: table
+      metadata:
+        appliedNodeTests: []
+        columns:
+          - columnReference:
+              columnCounter: ced44288-68be-4569-994c-65f74320cde7
+              stepCounter: f0f2e01d-79e8-49e7-9d12-8992080d96d9
+            dataType: VARIANT
+            description: ""
+            name: VALUE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: b1eb1181-9309-4ba9-8bc9-245f8dd2be00
+                    stepCounter: 6bbb7979-9be9-46a3-8328-4af05ab69d55
+                transform: ""
+        cteString: ""
+        enabledColumnTestIDs: []
+        sourceMapping:
+          - aliases: {}
+            customSQL:
+              customSQL: ""
+            dependencies:
+              - locationName: DW
+                nodeName: PY_TRUCK_XII
+            join:
+              joinCondition: FROM {{ ref('DW', 'PY_TRUCK_XII') }} "PY_TRUCK_XII"
+            name: PY_TRUCK_XII1
+            noLinkRefs: []
+      name: PY_TRUCK_XII1
+      overrideSQL: false
+      schema: ""
+      sqlType: "23"
+      type: sql
+    stepCounter: f0f2e01d-79e8-49e7-9d12-8992080d96d9
