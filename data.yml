@@ -8,23 +8,7 @@ jobs:
     name: Refresh BI Star Schema
     steps: []
     subgraphs: []
-locations:
-  3RD_PARTY_DATA:
-    mappingDefinitions:
-      "22":
-        database: CROOD_DEV
-        schema: WEATHER
-      "23":
-        database: CROOD_QA
-        schema: WEATHER
-  DW:
-    mappingDefinitions:
-      "22":
-        database: CROOD_DEV
-        schema: SOURCE_DATA
-      "23":
-        database: CROOD_QA
-        schema: SOURCE_DATA
+locations: {}
 macros:
   Macro-1:
     id: "1"
@@ -1438,7 +1422,7 @@ stepTypes:
     version: 1
   StepType-13:
     id: "13"
-    isDisabled: false
+    isDisabled: true
     metadata:
       defaultStorageLocation: DW
       error: null
@@ -1621,7 +1605,7 @@ stepTypes:
     id: "14"
     isDisabled: true
     metadata:
-      defaultStorageLocation: null
+      defaultStorageLocation: DW
       error: null
       nodeMetadataSpec: |-
         capitalized: SHIFT_SALES
@@ -1676,7 +1660,7 @@ stepTypes:
     version: 1
   StepType-15:
     id: "15"
-    isDisabled: false
+    isDisabled: true
     metadata:
       defaultStorageLocation: null
       error: null
@@ -2190,7 +2174,7 @@ stepTypes:
     version: 1
   StepType-16:
     id: "16"
-    isDisabled: false
+    isDisabled: true
     metadata:
       defaultStorageLocation: null
       error: null
@@ -2718,7 +2702,7 @@ stepTypes:
     version: 1
   StepType-17:
     id: "17"
-    isDisabled: false
+    isDisabled: true
     metadata:
       defaultStorageLocation: null
       error: null
@@ -3189,7 +3173,7 @@ stepTypes:
     version: 1
   StepType-2:
     id: "2"
-    isDisabled: false
+    isDisabled: true
     metadata:
       defaultStorageLocation: DW
       error: null
@@ -3379,6 +3363,91 @@ stepTypes:
             END
     name: CREATE AND RUN FORECAST
     version: 1
+  StepType-21:
+    id: "21"
+    isDisabled: false
+    metadata:
+      defaultStorageLocation: null
+      error: null
+      nodeMetadataSpec: |-
+        capitalized: External Table
+        short: External Table
+        tagColor: gray
+        plural: External Tables
+
+        config:
+        - groupName: File Location
+          items: 
+
+          - displayName: Stage
+            attributeName: stage
+            type: dropdownSelector
+            default: "s3load"
+            options:
+            - "s3load"
+            isRequired: true
+
+          - displayName: Stage Path
+            attributeName: stagePath
+            type: textBox
+            default: "/pos/truck/"
+            isRequired: false
+
+          - displayName: Python Libraries
+            attributeName: pyLib
+            type: textBox 
+            syntax: sql
+            isRequired: false   
+            default: "from snowflake.snowpark import Session"
+
+        - groupName: Landing Details 
+          items:
+          - displayName: Schema Name
+            attributeName: schemaName
+            type: textBox
+            default: "snowpark"
+            isRequired: true
+
+        systemColumns:
+        - displayName: 'VALUE'
+          attributeName: 'VALUE'
+          transform: ''
+          dataType: VARIANT
+          placement: beginning
+      templates:
+        create:
+          templateString: |
+            {{ stage('Create Python Procedure ') }}
+            {% set source = sources[0] %}
+
+            CREATE OR REPLACE PROCEDURE {{ ref_no_link(node.location.name, 'PROC_' + node.name | upper) | trim }}()
+              returns Table()
+              language python
+              runtime_version = '3.8'
+              packages = ('snowflake-snowpark-python', 'pandas') 
+              handler = 'main'
+            as
+            $$
+            {{ config.pyLib }}
+            import pandas as pd
+            import snowflake.snowpark.functions as F
+            def main(session:Session):
+                location = "@{{config.schemaName}}.{{config.stage}}{{config.stagePath}}"
+                df = session.read.parquet(location)
+                df.copy_into_table("{{config.schemaName}}.{{node.name}}")
+                df2 = df.to_pandas()
+                df2['VALUE'] = df2.apply(lambda row: row.to_json(), axis=1)
+                df3 = session.create_dataframe(df2)
+                df3 = df3.with_column("VALUE", F.sql_expr("parse_json(VALUE)"))
+                df3.write.mode("overwrite").saveAsTable("{{config.schemaName}}.{{node.name}}")
+                return df
+            $$
+        run:
+          templateString: |-
+            {{ stage('Run Stored Procedure') }}
+            CALL {{ ref_no_link(node.location.name, 'PROC_' + node.name | upper) | trim }}()
+    name: "Snowpark for Coalesce: External Table"
+    version: 1
   StepType-4:
     id: "4"
     isDisabled: true
@@ -3541,9 +3610,7 @@ stepTypes:
             syntax: sql
             isRequired: true    
             default: " \n
-        df_filtered = df_raw.filter(\"C_ACCTBAL > 5000\")\n
-        df_distinct = df_filtered.distinct()\n
-        df_final = df_distinct.na.drop(subset=\"C_PHONE\")\n
+        df_final = df_raw
         "
 
           - displayName: "https://docs.snowflake.com/en/developer-guide/snowpark/reference/python/latest/dataframe"
@@ -3604,7 +3671,7 @@ stepTypes:
     version: 1
   StepType-7:
     id: "7"
-    isDisabled: false
+    isDisabled: true
     metadata:
       defaultStorageLocation: DW
       error: null
@@ -3744,7 +3811,7 @@ stepTypes:
     version: 1
   StepType-9:
     id: "9"
-    isDisabled: false
+    isDisabled: true
     metadata:
       defaultStorageLocation: null
       error: null

@@ -1,0 +1,287 @@
+steps:
+  STG_TRUCK_VIII-253a2c09-ee03-4235-9bd3-e77928296c82:
+    operation:
+      config:
+        insertStrategy: INSERT
+        postSQL: ""
+        preSQL: ""
+        testsEnabled: true
+        truncateBefore: true
+      database: ""
+      deployEnabled: true
+      description: ""
+      isMultisource: false
+      locationName: DW
+      materializationType: table
+      metadata:
+        appliedNodeTests: []
+        columns:
+          - columnReference:
+              columnCounter: b3e9c00f-2585-4978-a4bd-13400b07c280
+              stepCounter: 253a2c09-ee03-4235-9bd3-e77928296c82
+            dataType: VARIANT
+            description: ""
+            name: VALUE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 4dde22db-c45c-4fb7-b1fb-ef61d5f6a5e9
+                    stepCounter: 89855f7b-954c-430e-9c47-cb5215bc33ca
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 252f959a-74a5-4487-bc9d-3d6ea7949f71
+              stepCounter: 253a2c09-ee03-4235-9bd3-e77928296c82
+            config: {}
+            dataType: STRING
+            description: ""
+            name: COUNTRY
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 4dde22db-c45c-4fb7-b1fb-ef61d5f6a5e9
+                    stepCounter: 89855f7b-954c-430e-9c47-cb5215bc33ca
+                transform: "\"TRUCK_VIII\".\"VALUE\":\"COUNTRY\"::STRING"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 9b45ae59-5c3e-4ef1-b535-0edcfc7e534a
+              stepCounter: 253a2c09-ee03-4235-9bd3-e77928296c82
+            config: {}
+            dataType: DOUBLE
+            description: ""
+            name: EV_FLAG
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 4dde22db-c45c-4fb7-b1fb-ef61d5f6a5e9
+                    stepCounter: 89855f7b-954c-430e-9c47-cb5215bc33ca
+                transform: "\"TRUCK_VIII\".\"VALUE\":\"EV_FLAG\"::DOUBLE"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 9ff432c3-addf-47a4-99cc-f59cd8d9a465
+              stepCounter: 253a2c09-ee03-4235-9bd3-e77928296c82
+            config: {}
+            dataType: DOUBLE
+            description: ""
+            name: FRANCHISE_FLAG
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 4dde22db-c45c-4fb7-b1fb-ef61d5f6a5e9
+                    stepCounter: 89855f7b-954c-430e-9c47-cb5215bc33ca
+                transform: "\"TRUCK_VIII\".\"VALUE\":\"FRANCHISE_FLAG\"::DOUBLE"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: eac32b43-fb82-404a-9eaa-80a6f1b0bbda
+              stepCounter: 253a2c09-ee03-4235-9bd3-e77928296c82
+            config: {}
+            dataType: DOUBLE
+            description: ""
+            name: FRANCHISE_ID
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 4dde22db-c45c-4fb7-b1fb-ef61d5f6a5e9
+                    stepCounter: 89855f7b-954c-430e-9c47-cb5215bc33ca
+                transform: "\"TRUCK_VIII\".\"VALUE\":\"FRANCHISE_ID\"::DOUBLE"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 0c38fd09-e91d-412f-98d2-7d71767c7d7f
+              stepCounter: 253a2c09-ee03-4235-9bd3-e77928296c82
+            config: {}
+            dataType: STRING
+            description: ""
+            name: ISO_COUNTRY_CODE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 4dde22db-c45c-4fb7-b1fb-ef61d5f6a5e9
+                    stepCounter: 89855f7b-954c-430e-9c47-cb5215bc33ca
+                transform: "\"TRUCK_VIII\".\"VALUE\":\"ISO_COUNTRY_CODE\"::STRING"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: db0bbcf9-2f85-4c71-a8bb-6dea0445075b
+              stepCounter: 253a2c09-ee03-4235-9bd3-e77928296c82
+            config: {}
+            dataType: STRING
+            description: ""
+            name: ISO_REGION
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 4dde22db-c45c-4fb7-b1fb-ef61d5f6a5e9
+                    stepCounter: 89855f7b-954c-430e-9c47-cb5215bc33ca
+                transform: "\"TRUCK_VIII\".\"VALUE\":\"ISO_REGION\"::STRING"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: e1bb0635-9775-4b3f-9bb7-309abb154f4f
+              stepCounter: 253a2c09-ee03-4235-9bd3-e77928296c82
+            config: {}
+            dataType: STRING
+            description: ""
+            name: MAKE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 4dde22db-c45c-4fb7-b1fb-ef61d5f6a5e9
+                    stepCounter: 89855f7b-954c-430e-9c47-cb5215bc33ca
+                transform: "\"TRUCK_VIII\".\"VALUE\":\"MAKE\"::STRING"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 7577fde1-f065-4c11-b1cb-8598289b6eee
+              stepCounter: 253a2c09-ee03-4235-9bd3-e77928296c82
+            config: {}
+            dataType: DOUBLE
+            description: ""
+            name: MENU_TYPE_ID
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 4dde22db-c45c-4fb7-b1fb-ef61d5f6a5e9
+                    stepCounter: 89855f7b-954c-430e-9c47-cb5215bc33ca
+                transform: "\"TRUCK_VIII\".\"VALUE\":\"MENU_TYPE_ID\"::DOUBLE"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 9e169cea-bdae-4349-9f6c-17676e4e9a08
+              stepCounter: 253a2c09-ee03-4235-9bd3-e77928296c82
+            config: {}
+            dataType: STRING
+            description: ""
+            name: MODEL
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 4dde22db-c45c-4fb7-b1fb-ef61d5f6a5e9
+                    stepCounter: 89855f7b-954c-430e-9c47-cb5215bc33ca
+                transform: "\"TRUCK_VIII\".\"VALUE\":\"MODEL\"::STRING"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: d5d0d0a3-c112-4478-a7ba-e9ab8fc05a42
+              stepCounter: 253a2c09-ee03-4235-9bd3-e77928296c82
+            config: {}
+            dataType: STRING
+            description: ""
+            name: PRIMARY_CITY
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 4dde22db-c45c-4fb7-b1fb-ef61d5f6a5e9
+                    stepCounter: 89855f7b-954c-430e-9c47-cb5215bc33ca
+                transform: "\"TRUCK_VIII\".\"VALUE\":\"PRIMARY_CITY\"::STRING"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 1dc0605f-eec5-4d20-b9e3-c371de7bfdcf
+              stepCounter: 253a2c09-ee03-4235-9bd3-e77928296c82
+            config: {}
+            dataType: STRING
+            description: ""
+            name: REGION
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 4dde22db-c45c-4fb7-b1fb-ef61d5f6a5e9
+                    stepCounter: 89855f7b-954c-430e-9c47-cb5215bc33ca
+                transform: "\"TRUCK_VIII\".\"VALUE\":\"REGION\"::STRING"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 71e84de8-9f83-4218-a329-e4b4a06fa227
+              stepCounter: 253a2c09-ee03-4235-9bd3-e77928296c82
+            config: {}
+            dataType: DOUBLE
+            description: ""
+            name: TRUCK_ID
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 4dde22db-c45c-4fb7-b1fb-ef61d5f6a5e9
+                    stepCounter: 89855f7b-954c-430e-9c47-cb5215bc33ca
+                transform: "\"TRUCK_VIII\".\"VALUE\":\"TRUCK_ID\"::DOUBLE"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 8f13e84b-bdb0-49f2-aa9e-397c4496b354
+              stepCounter: 253a2c09-ee03-4235-9bd3-e77928296c82
+            config: {}
+            dataType: DOUBLE
+            description: ""
+            name: TRUCK_OPENING_DATE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 4dde22db-c45c-4fb7-b1fb-ef61d5f6a5e9
+                    stepCounter: 89855f7b-954c-430e-9c47-cb5215bc33ca
+                transform: "\"TRUCK_VIII\".\"VALUE\":\"TRUCK_OPENING_DATE\"::DOUBLE"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: edb1a6f8-de06-4398-88af-77936616082b
+              stepCounter: 253a2c09-ee03-4235-9bd3-e77928296c82
+            config: {}
+            dataType: DOUBLE
+            description: ""
+            name: YEAR
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 4dde22db-c45c-4fb7-b1fb-ef61d5f6a5e9
+                    stepCounter: 89855f7b-954c-430e-9c47-cb5215bc33ca
+                transform: "\"TRUCK_VIII\".\"VALUE\":\"YEAR\"::DOUBLE"
+        cteString: ""
+        enabledColumnTestIDs: []
+        sourceMapping:
+          - aliases: {}
+            customSQL:
+              customSQL: ""
+            dependencies:
+              - locationName: DW
+                nodeName: TRUCK_VIII
+            join:
+              joinCondition: FROM {{ ref('DW', 'TRUCK_VIII') }} "TRUCK_VIII"
+            name: STG_TRUCK_VIII
+            noLinkRefs: []
+      name: STG_TRUCK_VIII
+      overrideSQL: false
+      schema: ""
+      sqlType: Stage
+      type: sql
+    stepCounter: 253a2c09-ee03-4235-9bd3-e77928296c82
