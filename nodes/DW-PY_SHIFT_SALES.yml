@@ -1,0 +1,183 @@
+steps:
+  PY_SHIFT_SALES-0719f4da-e4df-49c8-95e6-0744a0269b0e:
+    operation:
+      config:
+        dfcmd: " df_final = df_raw "
+        pyLib: import snowflake.snowpark as snowpark
+        writeMode: overwrite
+      database: ""
+      deployEnabled: true
+      description: ""
+      isMultisource: false
+      locationName: DW
+      materializationType: table
+      metadata:
+        appliedNodeTests: []
+        columns:
+          - columnReference:
+              columnCounter: 910a1b5b-0ea8-4726-aa12-d15e6b1409b8
+              stepCounter: 0719f4da-e4df-49c8-95e6-0744a0269b0e
+            dataType: VARIANT
+            description: ""
+            name: VALUE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: e77a1b5e-52af-4db7-9b7d-ac125fd90ea9
+                    stepCounter: 8b5a5a5b-bc06-4863-b416-659a70b4900a
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 2e3a316d-27c6-4605-8403-f56f7c508d7e
+              stepCounter: 0719f4da-e4df-49c8-95e6-0744a0269b0e
+            config: {}
+            dataType: DOUBLE
+            description: ""
+            name: location_id
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: e77a1b5e-52af-4db7-9b7d-ac125fd90ea9
+                    stepCounter: 8b5a5a5b-bc06-4863-b416-659a70b4900a
+                transform: "\"SHIFT_SALES\".\"VALUE\":\"c1\"::DOUBLE"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 73189d29-4bfe-47c8-acb5-d0f48d7c0e62
+              stepCounter: 0719f4da-e4df-49c8-95e6-0744a0269b0e
+            config: {}
+            dataType: STRING
+            description: ""
+            name: city
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: e77a1b5e-52af-4db7-9b7d-ac125fd90ea9
+                    stepCounter: 8b5a5a5b-bc06-4863-b416-659a70b4900a
+                transform: "\"SHIFT_SALES\".\"VALUE\":\"c2\"::STRING"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 371c53c5-365a-4aeb-a450-a82db7a05616
+              stepCounter: 0719f4da-e4df-49c8-95e6-0744a0269b0e
+            config: {}
+            dataType: DOUBLE
+            description: ""
+            name: date
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: e77a1b5e-52af-4db7-9b7d-ac125fd90ea9
+                    stepCounter: 8b5a5a5b-bc06-4863-b416-659a70b4900a
+                transform: "\"SHIFT_SALES\".\"VALUE\":\"c3\"::DOUBLE"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: b1bf4d74-a553-42fa-a060-03ff71c5dd25
+              stepCounter: 0719f4da-e4df-49c8-95e6-0744a0269b0e
+            config: {}
+            dataType: DOUBLE
+            description: ""
+            name: shift_sales
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: e77a1b5e-52af-4db7-9b7d-ac125fd90ea9
+                    stepCounter: 8b5a5a5b-bc06-4863-b416-659a70b4900a
+                transform: "\"SHIFT_SALES\".\"VALUE\":\"c4\"::DOUBLE"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 779e5bd2-b724-4641-8d59-a6dc2d65652e
+              stepCounter: 0719f4da-e4df-49c8-95e6-0744a0269b0e
+            config: {}
+            dataType: STRING
+            description: ""
+            name: shift
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: e77a1b5e-52af-4db7-9b7d-ac125fd90ea9
+                    stepCounter: 8b5a5a5b-bc06-4863-b416-659a70b4900a
+                transform: "\"SHIFT_SALES\".\"VALUE\":\"c5\"::STRING"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 786a762e-87e7-41b4-806c-5a07b8609e91
+              stepCounter: 0719f4da-e4df-49c8-95e6-0744a0269b0e
+            config: {}
+            dataType: DOUBLE
+            description: ""
+            name: month
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: e77a1b5e-52af-4db7-9b7d-ac125fd90ea9
+                    stepCounter: 8b5a5a5b-bc06-4863-b416-659a70b4900a
+                transform: "\"SHIFT_SALES\".\"VALUE\":\"c6\"::DOUBLE"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 25c435b0-a63b-43ac-9b67-f4a9f569ed5a
+              stepCounter: 0719f4da-e4df-49c8-95e6-0744a0269b0e
+            config: {}
+            dataType: DOUBLE
+            description: ""
+            name: day_of_week
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: e77a1b5e-52af-4db7-9b7d-ac125fd90ea9
+                    stepCounter: 8b5a5a5b-bc06-4863-b416-659a70b4900a
+                transform: "\"SHIFT_SALES\".\"VALUE\":\"c7\"::DOUBLE"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: dd7cb7b4-ec13-450d-b4b5-25090a205f58
+              stepCounter: 0719f4da-e4df-49c8-95e6-0744a0269b0e
+            config: {}
+            dataType: DOUBLE
+            description: ""
+            name: city_population
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: e77a1b5e-52af-4db7-9b7d-ac125fd90ea9
+                    stepCounter: 8b5a5a5b-bc06-4863-b416-659a70b4900a
+                transform: "\"SHIFT_SALES\".\"VALUE\":\"c8\"::DOUBLE"
+        cteString: ""
+        enabledColumnTestIDs: []
+        sourceMapping:
+          - aliases: {}
+            customSQL:
+              customSQL: ""
+            dependencies:
+              - locationName: DW
+                nodeName: SHIFT_SALES
+            join:
+              joinCondition: FROM {{ ref('DW', 'SHIFT_SALES') }} "SHIFT_SALES"
+            name: PY_SHIFT_SALES
+            noLinkRefs: []
+      name: PY_SHIFT_SALES
+      overrideSQL: false
+      schema: ""
+      sqlType: "23"
+      type: sql
+    stepCounter: 0719f4da-e4df-49c8-95e6-0744a0269b0e

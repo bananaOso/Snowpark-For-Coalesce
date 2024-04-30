@@ -3370,10 +3370,10 @@ stepTypes:
       defaultStorageLocation: null
       error: null
       nodeMetadataSpec: |-
-        capitalized: External Table
-        short: External Table
+        capitalized: Snowpark Source
+        short: Snowpark Source
         tagColor: gray
-        plural: External Tables
+        plural: Snowpark Sources
 
         config:
         - groupName: File Location
@@ -3385,6 +3385,7 @@ stepTypes:
             default: "s3load"
             options:
             - "s3load"
+            - "S3_DATASCIENCE"
             isRequired: true
 
           - displayName: Stage Path
@@ -3392,6 +3393,15 @@ stepTypes:
             type: textBox
             default: "/pos/truck/"
             isRequired: false
+
+          - displayName: File Type
+            attributeName: ftype
+            type: dropdownSelector
+            default: "parquet"
+            options:
+            - "parquet"
+            - "csv"
+            isRequired: true
 
           - displayName: Python Libraries
             attributeName: pyLib
@@ -3433,7 +3443,7 @@ stepTypes:
             import snowflake.snowpark.functions as F
             def main(session:Session):
                 location = "@{{config.schemaName}}.{{config.stage}}{{config.stagePath}}"
-                df = session.read.parquet(location)
+                df = session.read.{%- if config.ftype == "csv" -%} option("INFER_SCHEMA", True).{%- endif -%}{{config.ftype}}(location)
                 df.copy_into_table("{{config.schemaName}}.{{node.name}}")
                 df2 = df.to_pandas()
                 df2['VALUE'] = df2.apply(lambda row: row.to_json(), axis=1)
@@ -3446,7 +3456,7 @@ stepTypes:
           templateString: |-
             {{ stage('Run Stored Procedure') }}
             CALL {{ ref_no_link(node.location.name, 'PROC_' + node.name | upper) | trim }}()
-    name: "Snowpark for Coalesce: External Table"
+    name: "Snowpark for Coalesce: Source"
     version: 1
   StepType-23:
     id: "23"
