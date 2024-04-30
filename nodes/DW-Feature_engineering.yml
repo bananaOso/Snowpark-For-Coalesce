@@ -1,0 +1,174 @@
+steps:
+  Feature_engineering-3df1a621-4332-43ff-be10-bc541e5befdd:
+    operation:
+      config:
+        dfcmd: |-
+          window_by_location_all_days = (
+              snowpark.Window.partition_by("location_id", "shift")
+              .order_by("date")
+              .rows_between(snowpark.Window.UNBOUNDED_PRECEDING, snowpark.Window.CURRENT_ROW - 1)
+          )
+          snowpark_df = df_raw.with_column("avg_location_shift_sales", F.avg("shift_sales").over(window_by_location_all_days))
+          df_final = snowpark_df
+        pyLib: import snowflake.snowpark as snowpark
+        writeMode: overwrite
+      database: ""
+      deployEnabled: true
+      description: ""
+      isMultisource: false
+      locationName: DW
+      materializationType: table
+      metadata:
+        appliedNodeTests: []
+        columns:
+          - columnReference:
+              columnCounter: 84e53a56-381a-4fe9-b1a9-accca84bab40
+              stepCounter: 3df1a621-4332-43ff-be10-bc541e5befdd
+            dataType: VARIANT
+            description: ""
+            name: VALUE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: f0f1c3f5-fa53-49f3-a0c6-d83dd050b3b5
+                    stepCounter: d1424149-4d54-4049-b198-c229d6567d78
+                transform: ""
+          - columnReference:
+              columnCounter: dc817d07-7d4a-4d56-8ab5-970e0be8cec9
+              stepCounter: 3df1a621-4332-43ff-be10-bc541e5befdd
+            dataType: DOUBLE
+            description: ""
+            name: LOCATION_ID
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 5ad4ca79-a44d-47fb-b761-3b518680b501
+                    stepCounter: d1424149-4d54-4049-b198-c229d6567d78
+                transform: ""
+          - columnReference:
+              columnCounter: 4c00e255-1797-4848-9990-12520c9b26be
+              stepCounter: 3df1a621-4332-43ff-be10-bc541e5befdd
+            dataType: STRING
+            description: ""
+            name: CITY
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: f1c98b87-6dc1-4edc-9769-53afe6c2ba6c
+                    stepCounter: d1424149-4d54-4049-b198-c229d6567d78
+                transform: ""
+          - columnReference:
+              columnCounter: 94e9da25-53c8-4822-a793-54584ad62dba
+              stepCounter: 3df1a621-4332-43ff-be10-bc541e5befdd
+            dataType: DOUBLE
+            description: ""
+            name: SHIFT_SALES
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 5c7bea19-4a73-4b2e-b387-a5b908dc9a7c
+                    stepCounter: d1424149-4d54-4049-b198-c229d6567d78
+                transform: ""
+          - columnReference:
+              columnCounter: b8998bb7-d6af-43cd-aa70-c62d643c64d8
+              stepCounter: 3df1a621-4332-43ff-be10-bc541e5befdd
+            dataType: STRING
+            description: ""
+            name: SHIFT
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 6667011a-a160-4b5b-a626-d9d408b5ba2f
+                    stepCounter: d1424149-4d54-4049-b198-c229d6567d78
+                transform: ""
+          - columnReference:
+              columnCounter: 5d9b9a41-74cc-4229-8ea0-f14e1cd6ef48
+              stepCounter: 3df1a621-4332-43ff-be10-bc541e5befdd
+            dataType: DOUBLE
+            description: ""
+            name: MONTH
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 40aa55f4-9a82-4dba-8a91-0cc52db4d92f
+                    stepCounter: d1424149-4d54-4049-b198-c229d6567d78
+                transform: ""
+          - columnReference:
+              columnCounter: a3ed6a0d-ffd9-40d1-a861-7623135042fe
+              stepCounter: 3df1a621-4332-43ff-be10-bc541e5befdd
+            dataType: DOUBLE
+            description: ""
+            name: DAY_OF_WEEK
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: fb8ef719-fe9d-45e8-a409-8318df0fa901
+                    stepCounter: d1424149-4d54-4049-b198-c229d6567d78
+                transform: ""
+          - columnReference:
+              columnCounter: 1a1227b2-7a4b-4053-9690-e7fbf1695305
+              stepCounter: 3df1a621-4332-43ff-be10-bc541e5befdd
+            dataType: DOUBLE
+            description: ""
+            name: CITY_POPULATION
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 8584033e-b72b-4f9f-ac16-a27b15a3c517
+                    stepCounter: d1424149-4d54-4049-b198-c229d6567d78
+                transform: ""
+          - columnReference:
+              columnCounter: 3721d193-ab14-44a1-837c-5a3d8b6e9558
+              stepCounter: 3df1a621-4332-43ff-be10-bc541e5befdd
+            dataType: FLOAT
+            description: ""
+            name: LONGITUDE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: f910004e-860f-41c8-a373-32fb8f4f08d0
+                    stepCounter: d1424149-4d54-4049-b198-c229d6567d78
+                transform: ""
+          - columnReference:
+              columnCounter: 3e8af628-95f7-4e85-ad24-d47c691f47a4
+              stepCounter: 3df1a621-4332-43ff-be10-bc541e5befdd
+            dataType: FLOAT
+            description: ""
+            name: LATITUDE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: a7657e5f-5f6c-4c36-a523-2af2bc4ce023
+                    stepCounter: d1424149-4d54-4049-b198-c229d6567d78
+                transform: ""
+          - columnReference:
+              columnCounter: 56763fcb-d2dc-43f7-8f6e-08d9f217dd94
+              stepCounter: 3df1a621-4332-43ff-be10-bc541e5befdd
+            dataType: DATE
+            description: ""
+            name: DATE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 3aa85075-ab32-4fb6-9e53-363110aea260
+                    stepCounter: d1424149-4d54-4049-b198-c229d6567d78
+                transform: ""
+        cteString: ""
+        enabledColumnTestIDs: []
+        sourceMapping:
+          - aliases: {}
+            customSQL:
+              customSQL: ""
+            dependencies:
+              - locationName: DW
+                nodeName: STG_SHIFT_SALES_FROSTBYTE_TB_SAFEGRAPH_S
+            join:
+              joinCondition: FROM {{ ref('DW', 'STG_SHIFT_SALES_FROSTBYTE_TB_SAFEGRAPH_S') }} "STG_SHIFT_SALES_FROSTBYTE_TB_SAFEGRAPH_S"
+            name: Feature_engineering
+            noLinkRefs: []
+      name: Feature_engineering
+      overrideSQL: false
+      schema: ""
+      sqlType: "23"
+      type: sql
+    stepCounter: 3df1a621-4332-43ff-be10-bc541e5befdd

@@ -1,0 +1,241 @@
+steps:
+  IMPUTATION_CATEGORICAL-9995f75b-39c9-45be-abbf-ec1a03858fb1:
+    operation:
+      config:
+        dfcmd: |-
+          df_raw = df_raw.sort(F.col('DATE'))
+          df_raw= df_raw.limit(5000)
+          snowpark_df = df_raw.fillna(value=0, subset=["avg_location_shift_sales"])
+          snowpark_df = snowpark_df.with_column("shift", F.iff(F.col("shift") == "AM", 1, 0))
+          historical_snowpark_df = snowpark_df.filter(F.col("shift_sales").is_not_null())
+          historical_snowpark_df = historical_snowpark_df.drop("location_id", "city")
+           df_final = historical_snowpark_df
+        pyLib: import snowflake.snowpark as snowpark
+        writeMode: overwrite
+      database: ""
+      deployEnabled: true
+      description: ""
+      isMultisource: false
+      locationName: DW
+      materializationType: table
+      metadata:
+        appliedNodeTests: []
+        columns:
+          - columnReference:
+              columnCounter: 7018ba41-e862-4462-969d-91014e2e8fa1
+              stepCounter: 9995f75b-39c9-45be-abbf-ec1a03858fb1
+            dataType: VARIANT
+            description: ""
+            name: VALUE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 84e53a56-381a-4fe9-b1a9-accca84bab40
+                    stepCounter: 3df1a621-4332-43ff-be10-bc541e5befdd
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 80809227-d9ef-48c8-a23a-a70b602217fc
+              stepCounter: 9995f75b-39c9-45be-abbf-ec1a03858fb1
+            config: {}
+            dataType: DOUBLE
+            description: ""
+            name: AVG_LOCATION_SHIFT_SALES
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 84e53a56-381a-4fe9-b1a9-accca84bab40
+                    stepCounter: 3df1a621-4332-43ff-be10-bc541e5befdd
+                transform: "\"Feature_engineering\".\"VALUE\":\"AVG_LOCATION_SHIFT_SALES\"::DOUBLE"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 957fb3ef-7842-4f91-8823-8d23de19e436
+              stepCounter: 9995f75b-39c9-45be-abbf-ec1a03858fb1
+            config: {}
+            dataType: STRING
+            description: ""
+            name: CITY
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 84e53a56-381a-4fe9-b1a9-accca84bab40
+                    stepCounter: 3df1a621-4332-43ff-be10-bc541e5befdd
+                transform: "\"Feature_engineering\".\"VALUE\":\"CITY\"::STRING"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 530d59f0-592d-4f77-9b9b-28ff757a6ac1
+              stepCounter: 9995f75b-39c9-45be-abbf-ec1a03858fb1
+            config: {}
+            dataType: DOUBLE
+            description: ""
+            name: CITY_POPULATION
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 84e53a56-381a-4fe9-b1a9-accca84bab40
+                    stepCounter: 3df1a621-4332-43ff-be10-bc541e5befdd
+                transform: "\"Feature_engineering\".\"VALUE\":\"CITY_POPULATION\"::DOUBLE"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: f8dfd5a8-a8de-4c67-b31d-b7b37589e24b
+              stepCounter: 9995f75b-39c9-45be-abbf-ec1a03858fb1
+            config: {}
+            dataType: DOUBLE
+            description: ""
+            name: DATE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 84e53a56-381a-4fe9-b1a9-accca84bab40
+                    stepCounter: 3df1a621-4332-43ff-be10-bc541e5befdd
+                transform: "\"Feature_engineering\".\"VALUE\":\"DATE\"::DOUBLE"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 9ff16f52-ec14-408b-89af-6599fc6ca7b5
+              stepCounter: 9995f75b-39c9-45be-abbf-ec1a03858fb1
+            config: {}
+            dataType: DOUBLE
+            description: ""
+            name: DAY_OF_WEEK
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 84e53a56-381a-4fe9-b1a9-accca84bab40
+                    stepCounter: 3df1a621-4332-43ff-be10-bc541e5befdd
+                transform: "\"Feature_engineering\".\"VALUE\":\"DAY_OF_WEEK\"::DOUBLE"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 76e3a3dc-39ac-4057-8a50-f904fc1465ed
+              stepCounter: 9995f75b-39c9-45be-abbf-ec1a03858fb1
+            config: {}
+            dataType: DOUBLE
+            description: ""
+            name: LATITUDE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 84e53a56-381a-4fe9-b1a9-accca84bab40
+                    stepCounter: 3df1a621-4332-43ff-be10-bc541e5befdd
+                transform: "\"Feature_engineering\".\"VALUE\":\"LATITUDE\"::DOUBLE"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: b6b9a39b-359e-4136-aeb2-2a5ad928418c
+              stepCounter: 9995f75b-39c9-45be-abbf-ec1a03858fb1
+            config: {}
+            dataType: DOUBLE
+            description: ""
+            name: LOCATION_ID
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 84e53a56-381a-4fe9-b1a9-accca84bab40
+                    stepCounter: 3df1a621-4332-43ff-be10-bc541e5befdd
+                transform: "\"Feature_engineering\".\"VALUE\":\"LOCATION_ID\"::DOUBLE"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 7fd846f6-d304-443d-8023-64b1a0945dcd
+              stepCounter: 9995f75b-39c9-45be-abbf-ec1a03858fb1
+            config: {}
+            dataType: DOUBLE
+            description: ""
+            name: LONGITUDE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 84e53a56-381a-4fe9-b1a9-accca84bab40
+                    stepCounter: 3df1a621-4332-43ff-be10-bc541e5befdd
+                transform: "\"Feature_engineering\".\"VALUE\":\"LONGITUDE\"::DOUBLE"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 7d376bc1-352c-415a-b028-ca4d43bc1ac4
+              stepCounter: 9995f75b-39c9-45be-abbf-ec1a03858fb1
+            config: {}
+            dataType: DOUBLE
+            description: ""
+            name: MONTH
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 84e53a56-381a-4fe9-b1a9-accca84bab40
+                    stepCounter: 3df1a621-4332-43ff-be10-bc541e5befdd
+                transform: "\"Feature_engineering\".\"VALUE\":\"MONTH\"::DOUBLE"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 4d195991-20b7-4bd7-b1b4-66a086405bbc
+              stepCounter: 9995f75b-39c9-45be-abbf-ec1a03858fb1
+            config: {}
+            dataType: STRING
+            description: ""
+            name: SHIFT
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 84e53a56-381a-4fe9-b1a9-accca84bab40
+                    stepCounter: 3df1a621-4332-43ff-be10-bc541e5befdd
+                transform: "\"Feature_engineering\".\"VALUE\":\"SHIFT\"::STRING"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 376ea0aa-90c5-459a-a543-5d6254a8d51e
+              stepCounter: 9995f75b-39c9-45be-abbf-ec1a03858fb1
+            config: {}
+            dataType: DOUBLE
+            description: ""
+            name: SHIFT_SALES
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 84e53a56-381a-4fe9-b1a9-accca84bab40
+                    stepCounter: 3df1a621-4332-43ff-be10-bc541e5befdd
+                transform: "\"Feature_engineering\".\"VALUE\":\"SHIFT_SALES\"::DOUBLE"
+        cteString: ""
+        enabledColumnTestIDs: []
+        sourceMapping:
+          - aliases: {}
+            customSQL:
+              customSQL: ""
+            dependencies:
+              - locationName: DW
+                nodeName: Feature_engineering
+            join:
+              joinCondition: FROM {{ ref('DW', 'Feature_engineering') }} "Feature_engineering"
+            name: IMPUTATION_CATEGORICAL
+            noLinkRefs: []
+      name: IMPUTATION_CATEGORICAL
+      overrideSQL: false
+      schema: ""
+      sqlType: "23"
+      type: sql
+    stepCounter: 9995f75b-39c9-45be-abbf-ec1a03858fb1

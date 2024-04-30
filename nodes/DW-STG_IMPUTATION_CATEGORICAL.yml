@@ -1,0 +1,64 @@
+steps:
+  STG_IMPUTATION_CATEGORICAL-d9d93949-e6cd-4bf8-b155-ae295e2e4bfa:
+    operation:
+      config:
+        insertStrategy: INSERT
+        postSQL: ""
+        preSQL: ""
+        testsEnabled: true
+        truncateBefore: true
+      database: ""
+      deployEnabled: true
+      description: ""
+      isMultisource: false
+      locationName: DW
+      materializationType: table
+      metadata:
+        appliedNodeTests: []
+        columns:
+          - columnReference:
+              columnCounter: 11c6b0d1-89c9-481a-aecb-78c7992558da
+              stepCounter: d9d93949-e6cd-4bf8-b155-ae295e2e4bfa
+            dataType: FLOAT
+            description: ""
+            name: SHIFT_SALES
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 376ea0aa-90c5-459a-a543-5d6254a8d51e
+                    stepCounter: 9995f75b-39c9-45be-abbf-ec1a03858fb1
+                transform: sum("IMPUTATION_CATEGORICAL"."SHIFT_SALES")
+          - columnReference:
+              columnCounter: 96dfe59a-bf61-4489-a26f-2544dcae2097
+              stepCounter: d9d93949-e6cd-4bf8-b155-ae295e2e4bfa
+            dataType: DATE
+            description: ""
+            name: DATE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: f8dfd5a8-a8de-4c67-b31d-b7b37589e24b
+                    stepCounter: 9995f75b-39c9-45be-abbf-ec1a03858fb1
+                transform: TO_DATE(TO_VARCHAR("IMPUTATION_CATEGORICAL"."DATE"))
+        cteString: ""
+        enabledColumnTestIDs: []
+        sourceMapping:
+          - aliases:
+              IMPUTATION_CATEGORICAL: 9995f75b-39c9-45be-abbf-ec1a03858fb1
+            customSQL:
+              customSQL: ""
+            dependencies:
+              - locationName: DW
+                nodeName: IMPUTATION_CATEGORICAL
+            join:
+              joinCondition: |-
+                FROM {{ ref('DW', 'IMPUTATION_CATEGORICAL') }} "IMPUTATION_CATEGORICAL"
+                group by "DATE"
+            name: STG_IMPUTATION_CATEGORICAL
+            noLinkRefs: []
+      name: STG_IMPUTATION_CATEGORICAL
+      overrideSQL: false
+      schema: ""
+      sqlType: Stage
+      type: sql
+    stepCounter: d9d93949-e6cd-4bf8-b155-ae295e2e4bfa

@@ -3173,7 +3173,7 @@ stepTypes:
     version: 1
   StepType-2:
     id: "2"
-    isDisabled: true
+    isDisabled: false
     metadata:
       defaultStorageLocation: DW
       error: null
@@ -3361,7 +3361,7 @@ stepTypes:
 
 
             END
-    name: CREATE AND RUN FORECAST
+    name: "Snowpark for Coalesce: CREATE AND RUN FORECAST"
     version: 1
   StepType-21:
     id: "21"
