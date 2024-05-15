@@ -8,6 +8,13 @@ jobs:
     name: Refresh BI Star Schema
     steps: []
     subgraphs: []
+  Job-3:
+    excludeSelector: ""
+    id: 3
+    includeSelector: "+{ location: DW name: ML_FCSTS_IMPUTATION_CATEGORICAL }"
+    name: New Job
+    steps: []
+    subgraphs: []
 locations: {}
 macros:
   Macro-1:

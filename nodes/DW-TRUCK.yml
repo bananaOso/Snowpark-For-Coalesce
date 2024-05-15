@@ -1,5 +1,5 @@
 steps:
-  TRUCK-2eaa20fc-43ff-4489-b008-f2d2e1980ad1:
+  TRUCK-85e1752f-407e-4775-933c-2523819c916a:
     operation:
       config:
         ftype: parquet
@@ -22,8 +22,8 @@ steps:
               values: []
             appliedColumnTests: {}
             columnReference:
-              columnCounter: f0d0e8a5-4433-43b5-8060-5ad64907e1bd
-              stepCounter: 2eaa20fc-43ff-4489-b008-f2d2e1980ad1
+              columnCounter: 16a08cf5-b894-49dc-a1d8-cedadb1acd8c
+              stepCounter: 85e1752f-407e-4775-933c-2523819c916a
             config: {}
             dataType: VARIANT
             defaultValue: ""
@@ -49,4 +49,4 @@ steps:
       schema: ""
       sqlType: "21"
       type: sql
-    stepCounter: 2eaa20fc-43ff-4489-b008-f2d2e1980ad1
+    stepCounter: 85e1752f-407e-4775-933c-2523819c916a

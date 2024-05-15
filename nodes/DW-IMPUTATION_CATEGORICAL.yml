@@ -19,9 +19,15 @@ steps:
       locationName: DW
       materializationType: table
       metadata:
-        appliedNodeTests: []
+        appliedNodeTests:
+          - continueOnFailure: true
+            description: ""
+            name: Test
+            runOrder: After
+            templateString: ""
         columns:
-          - columnReference:
+          - appliedColumnTests: {}
+            columnReference:
               columnCounter: 7018ba41-e862-4462-969d-91014e2e8fa1
               stepCounter: 9995f75b-39c9-45be-abbf-ec1a03858fb1
             dataType: VARIANT
