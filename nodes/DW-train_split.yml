@@ -1,0 +1,203 @@
+steps:
+  train_split-a7554dd8-00e2-46d5-a4d6-801f107b8f22:
+    operation:
+      config:
+        dfcmd: |-
+          train_snowpark_df, test_snowpark_df = df_raw.randomSplit([0.8, 0.2])
+
+          df_final = train_snowpark_df
+        pyLib: import snowflake.snowpark as snowpark
+        writeMode: overwrite
+      database: ""
+      deployEnabled: true
+      description: ""
+      isMultisource: false
+      locationName: DW
+      materializationType: table
+      metadata:
+        appliedNodeTests: []
+        columns:
+          - columnReference:
+              columnCounter: c9d00c8f-3a80-48c8-8d38-b026066f1898
+              stepCounter: a7554dd8-00e2-46d5-a4d6-801f107b8f22
+            dataType: VARIANT
+            description: ""
+            name: VALUE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 7018ba41-e862-4462-969d-91014e2e8fa1
+                    stepCounter: 9995f75b-39c9-45be-abbf-ec1a03858fb1
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 5b6ad2e7-7e3c-42fd-b4c8-fe68a2a0e3d7
+              stepCounter: a7554dd8-00e2-46d5-a4d6-801f107b8f22
+            config: {}
+            dataType: DOUBLE
+            description: ""
+            name: AVG_LOCATION_SHIFT_SALES
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 7018ba41-e862-4462-969d-91014e2e8fa1
+                    stepCounter: 9995f75b-39c9-45be-abbf-ec1a03858fb1
+                transform: "\"IMPUTATION_CATEGORICAL\".\"VALUE\":\"AVG_LOCATION_SHIFT_SALES\"::DOUBLE"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: bb10cd3a-f85b-47c1-9bb5-6be7d70dea19
+              stepCounter: a7554dd8-00e2-46d5-a4d6-801f107b8f22
+            config: {}
+            dataType: DOUBLE
+            description: ""
+            name: CITY_POPULATION
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 7018ba41-e862-4462-969d-91014e2e8fa1
+                    stepCounter: 9995f75b-39c9-45be-abbf-ec1a03858fb1
+                transform: "\"IMPUTATION_CATEGORICAL\".\"VALUE\":\"CITY_POPULATION\"::DOUBLE"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: c418f891-f293-40aa-8375-54dd92e0a356
+              stepCounter: a7554dd8-00e2-46d5-a4d6-801f107b8f22
+            config: {}
+            dataType: DOUBLE
+            description: ""
+            name: DATE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 7018ba41-e862-4462-969d-91014e2e8fa1
+                    stepCounter: 9995f75b-39c9-45be-abbf-ec1a03858fb1
+                transform: "\"IMPUTATION_CATEGORICAL\".\"VALUE\":\"DATE\"::DOUBLE"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: f3cc9a08-5a49-479c-a363-fadf2d4be094
+              stepCounter: a7554dd8-00e2-46d5-a4d6-801f107b8f22
+            config: {}
+            dataType: DOUBLE
+            description: ""
+            name: DAY_OF_WEEK
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 7018ba41-e862-4462-969d-91014e2e8fa1
+                    stepCounter: 9995f75b-39c9-45be-abbf-ec1a03858fb1
+                transform: "\"IMPUTATION_CATEGORICAL\".\"VALUE\":\"DAY_OF_WEEK\"::DOUBLE"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: fab7b979-63eb-4587-b679-25e313ea9ef4
+              stepCounter: a7554dd8-00e2-46d5-a4d6-801f107b8f22
+            config: {}
+            dataType: DOUBLE
+            description: ""
+            name: LATITUDE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 7018ba41-e862-4462-969d-91014e2e8fa1
+                    stepCounter: 9995f75b-39c9-45be-abbf-ec1a03858fb1
+                transform: "\"IMPUTATION_CATEGORICAL\".\"VALUE\":\"LATITUDE\"::DOUBLE"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: d063d936-d8b0-487d-b3f5-ad23c4ed400e
+              stepCounter: a7554dd8-00e2-46d5-a4d6-801f107b8f22
+            config: {}
+            dataType: DOUBLE
+            description: ""
+            name: LONGITUDE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 7018ba41-e862-4462-969d-91014e2e8fa1
+                    stepCounter: 9995f75b-39c9-45be-abbf-ec1a03858fb1
+                transform: "\"IMPUTATION_CATEGORICAL\".\"VALUE\":\"LONGITUDE\"::DOUBLE"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: a5f36ef4-b84d-4956-9a16-0727777bffc1
+              stepCounter: a7554dd8-00e2-46d5-a4d6-801f107b8f22
+            config: {}
+            dataType: DOUBLE
+            description: ""
+            name: MONTH
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 7018ba41-e862-4462-969d-91014e2e8fa1
+                    stepCounter: 9995f75b-39c9-45be-abbf-ec1a03858fb1
+                transform: "\"IMPUTATION_CATEGORICAL\".\"VALUE\":\"MONTH\"::DOUBLE"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: dd824924-2561-4635-8f71-6a5d42da7370
+              stepCounter: a7554dd8-00e2-46d5-a4d6-801f107b8f22
+            config: {}
+            dataType: DOUBLE
+            description: ""
+            name: SHIFT
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 7018ba41-e862-4462-969d-91014e2e8fa1
+                    stepCounter: 9995f75b-39c9-45be-abbf-ec1a03858fb1
+                transform: "\"IMPUTATION_CATEGORICAL\".\"VALUE\":\"SHIFT\"::DOUBLE"
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 6827d67c-402d-4a54-a328-d722b329ffe9
+              stepCounter: a7554dd8-00e2-46d5-a4d6-801f107b8f22
+            config: {}
+            dataType: DOUBLE
+            description: ""
+            name: SHIFT_SALES
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 7018ba41-e862-4462-969d-91014e2e8fa1
+                    stepCounter: 9995f75b-39c9-45be-abbf-ec1a03858fb1
+                transform: "\"IMPUTATION_CATEGORICAL\".\"VALUE\":\"SHIFT_SALES\"::DOUBLE"
+        cteString: ""
+        enabledColumnTestIDs: []
+        sourceMapping:
+          - aliases: {}
+            customSQL:
+              customSQL: ""
+            dependencies:
+              - locationName: DW
+                nodeName: IMPUTATION_CATEGORICAL
+            join:
+              joinCondition: FROM {{ ref('DW', 'IMPUTATION_CATEGORICAL') }} "IMPUTATION_CATEGORICAL"
+            name: train_split
+            noLinkRefs: []
+      name: train_split
+      overrideSQL: false
+      schema: ""
+      sqlType: "23"
+      type: sql
+    stepCounter: a7554dd8-00e2-46d5-a4d6-801f107b8f22

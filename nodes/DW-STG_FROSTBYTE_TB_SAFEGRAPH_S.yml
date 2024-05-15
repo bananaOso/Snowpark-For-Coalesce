@@ -1,0 +1,73 @@
+steps:
+  STG_FROSTBYTE_TB_SAFEGRAPH_S-b5357c29-6209-4fcd-8588-8cce4f96b75a:
+    operation:
+      config:
+        insertStrategy: INSERT
+        postSQL: ""
+        preSQL: ""
+        testsEnabled: true
+        truncateBefore: true
+      database: ""
+      deployEnabled: true
+      description: ""
+      isMultisource: false
+      locationName: DW
+      materializationType: table
+      metadata:
+        appliedNodeTests: []
+        columns:
+          - columnReference:
+              columnCounter: 89ee50bb-6350-45c9-ac71-5403b922d168
+              stepCounter: b5357c29-6209-4fcd-8588-8cce4f96b75a
+            dataType: FLOAT
+            description: ""
+            name: LONGITUDE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 89974511-0f3d-407d-bca8-d61f8b6dfcbf
+                    stepCounter: b71796a8-cc20-49d5-8194-af26a1e9afb0
+                transform: ""
+          - columnReference:
+              columnCounter: 1278ff36-784e-4314-80e5-2a1142430aec
+              stepCounter: b5357c29-6209-4fcd-8588-8cce4f96b75a
+            dataType: FLOAT
+            description: ""
+            name: LATITUDE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 44bcbceb-41c2-45a3-96ab-d0e365b99de8
+                    stepCounter: b71796a8-cc20-49d5-8194-af26a1e9afb0
+                transform: ""
+          - columnReference:
+              columnCounter: dc78bb2c-d9e3-435a-87d7-9b83115a0f0e
+              stepCounter: b5357c29-6209-4fcd-8588-8cce4f96b75a
+            dataType: NUMBER(38,0)
+            description: ""
+            name: LOCATION_ID
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 339a443d-912e-437d-8093-f3db6bb40ddb
+                    stepCounter: b71796a8-cc20-49d5-8194-af26a1e9afb0
+                transform: ""
+        cteString: ""
+        enabledColumnTestIDs: []
+        sourceMapping:
+          - aliases: {}
+            customSQL:
+              customSQL: ""
+            dependencies:
+              - locationName: DATA_SHARE
+                nodeName: FROSTBYTE_TB_SAFEGRAPH_S
+            join:
+              joinCondition: FROM {{ ref('DATA_SHARE', 'FROSTBYTE_TB_SAFEGRAPH_S') }} "FROSTBYTE_TB_SAFEGRAPH_S"
+            name: STG_FROSTBYTE_TB_SAFEGRAPH_S
+            noLinkRefs: []
+      name: STG_FROSTBYTE_TB_SAFEGRAPH_S
+      overrideSQL: false
+      schema: ""
+      sqlType: Stage
+      type: sql
+    stepCounter: b5357c29-6209-4fcd-8588-8cce4f96b75a

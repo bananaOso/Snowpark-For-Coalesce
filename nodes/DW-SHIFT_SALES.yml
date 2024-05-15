@@ -1,0 +1,52 @@
+steps:
+  SHIFT_SALES-8b5a5a5b-bc06-4863-b416-659a70b4900a:
+    operation:
+      config:
+        ftype: csv
+        pyLib: from snowflake.snowpark import Session
+        schemaName: snowpark
+        stage: S3_DATASCIENCE
+        stagePath: /analytics/shift_sales/
+      database: ""
+      deployEnabled: true
+      description: ""
+      isMultisource: false
+      locationName: DW
+      materializationType: table
+      metadata:
+        appliedNodeTests: []
+        columns:
+          - VALUE: true
+            acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: e77a1b5e-52af-4db7-9b7d-ac125fd90ea9
+              stepCounter: 8b5a5a5b-bc06-4863-b416-659a70b4900a
+            config: {}
+            dataType: VARIANT
+            defaultValue: ""
+            description: ""
+            name: VALUE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences: []
+                transform: ""
+        cteString: ""
+        enabledColumnTestIDs: []
+        sourceMapping:
+          - aliases: {}
+            customSQL:
+              customSQL: ""
+            dependencies: []
+            join:
+              joinCondition: ""
+            name: SHIFT_SALES
+            noLinkRefs: []
+      name: SHIFT_SALES
+      overrideSQL: false
+      schema: ""
+      sqlType: "21"
+      type: sql
+    stepCounter: 8b5a5a5b-bc06-4863-b416-659a70b4900a
